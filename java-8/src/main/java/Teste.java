@@ -16,7 +16,9 @@ public class Teste {
     @Subtrair
     public BigDecimal number4;
 
-    public Teste(BigDecimal number3, BigDecimal number4) {
+    public Teste(BigDecimal number1, BigDecimal number2, BigDecimal number3, BigDecimal number4) {
+        this.number1 = number1;
+        this.number2 = number2;
         this.number3 = number3;
         this.number4 = number4;
     }

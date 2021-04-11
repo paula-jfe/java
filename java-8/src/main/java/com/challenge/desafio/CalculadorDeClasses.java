@@ -9,57 +9,39 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+// Seguindo orientações Gustavo Gomes e Neto
 public class CalculadorDeClasses implements Calculavel {
-    private BigDecimal somaSeBigDecimal(Object objeto) {
-        BigDecimal vazio = BigDecimal.ZERO;
+    private BigDecimal somaSeBigDecimal(final Object objeto, final Class annotationClasse) {
         Field[] atributos = objeto.getClass().getDeclaredFields();
-        List<BigDecimal> somarLista = new ArrayList<>();
-        List<BigDecimal> subtrairLista = new ArrayList<>();
-        // Exemplo https://www.guj.com.br/t/java-8-somatorio-de-lista-de-bigdecimal/320578/2
+        List<BigDecimal> lista = new ArrayList<>();
 
         for (Field f: atributos) {
             if (f.getType().equals(BigDecimal.class)) {
-                if (f.isAnnotationPresent(Somar.class)) {
-                    try {
-                        f.setAccessible(true);
-                        somarLista.add((BigDecimal) f.get(objeto));
-                        System.out.println("somar");
-                        System.out.println(somarLista.toString());
-                        return somarLista.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+                f.setAccessible(true);
+                try {
+                    if (f.get(objeto) != null && f.isAnnotationPresent(annotationClasse)) {
+                        lista.add((BigDecimal) f.get(objeto));
                     }
-                } else if (f.isAnnotationPresent(Subtrair.class)) {
-                    try {
-                        f.setAccessible(true);
-                        subtrairLista.add((BigDecimal) f.get(objeto));
-                        System.out.println("subtrair");
-                        return subtrairLista.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    return vazio;
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
                 }
-            } else {
-                return vazio;
             }
         }
-        return null;
+        return (lista.size() > 0) ? lista.stream().reduce(BigDecimal.ZERO, BigDecimal::add) : BigDecimal.ZERO;
     }
 
     @Override
-    public BigDecimal somar(Object objeto) {
-        return somaSeBigDecimal(objeto);
+    public BigDecimal somar(final Object objeto) {
+        return somaSeBigDecimal(objeto, Somar.class);
     }
 
     @Override
-    public BigDecimal subtrair(Object objeto) {
-        return somaSeBigDecimal(objeto);
+    public BigDecimal subtrair(final Object objeto) {
+        return somaSeBigDecimal(objeto, Subtrair.class);
     }
 
     @Override
-    public BigDecimal totalizar(Object objeto) {
+    public BigDecimal totalizar(final Object objeto) {
         return this.somar(objeto).subtract(this.subtrair(objeto));
     }
 }
