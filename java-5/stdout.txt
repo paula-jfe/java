@@ -1,20 +1,21 @@
+> Task :clean
 > Task :compileJava
-> Task :processResources UP-TO-DATE
+> Task :processResources
 > Task :classes
 > Task :compileTestJava
 > Task :processTestResources NO-SOURCE
 > Task :testClasses
 
 > Task :test
-2021-04-18 07:56:36.398  INFO 59389 --- [       Thread-6] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@794e1c8a: startup date [Sun Apr 18 07:56:19 BRT 2021]; root of context hierarchy
-2021-04-18 07:56:36.408  INFO 59389 --- [       Thread-8] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@1884fe9f: startup date [Sun Apr 18 07:56:34 BRT 2021]; root of context hierarchy
-2021-04-18 07:56:36.418  INFO 59389 --- [       Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-04-18 07:56:36.424  INFO 59389 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2021-04-18 07:56:36.439  INFO 59389 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-18 18:32:14.497  INFO 70795 --- [       Thread-8] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2acbfd72: startup date [Sun Apr 18 18:32:03 BRT 2021]; root of context hierarchy
+2021-04-18 18:32:14.502  INFO 70795 --- [       Thread-5] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@408375ab: startup date [Sun Apr 18 18:31:58 BRT 2021]; root of context hierarchy
+2021-04-18 18:32:14.516  INFO 70795 --- [       Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-18 18:32:14.518  INFO 70795 --- [       Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-18 18:32:14.544  INFO 70795 --- [       Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.
 Use '--warning-mode all' to show the individual deprecation warnings.
 See https://docs.gradle.org/4.9/userguide/command_line_interface.html#sec:command_line_warnings
 
-BUILD SUCCESSFUL in 25s
-4 actionable tasks: 3 executed, 1 up-to-date
+BUILD SUCCESSFUL in 26s
+5 actionable tasks: 5 executed
