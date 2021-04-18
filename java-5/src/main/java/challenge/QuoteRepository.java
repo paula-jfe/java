@@ -1,11 +1,18 @@
 package challenge;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
+import org.springframework.data.repository.query.Param;
 
 public interface QuoteRepository extends CrudRepository<Quote, Integer> {
 
-    //public List<Quote> findByActor(String actor);
+    @Query(value = "SELECT * FROM scripts " +
+            "ORDER BY RAND() LIMIT 1 ", nativeQuery = true)
+    Quote getQuote();
+
+    @Query(value = " SELECT * FROM scripts " +
+            "WHERE actor = :actor " +
+            "ORDER BY RAND() LIMIT 1 ", nativeQuery = true)
+    Quote getQuoteByActor(@Param("actor") String actor);
 
 }

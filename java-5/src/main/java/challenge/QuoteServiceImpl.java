@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 public class QuoteServiceImpl implements QuoteService {
 
 	@Autowired
-	private QuoteRepository repository;
+	private QuoteRepository quoteRepository;
 
 	@Override
 	public Quote getQuote() {
-		return null;
+		return quoteRepository.getQuote();
 	}
 
 	@Override
 	public Quote getQuoteByActor(String actor) {
-		return null;
+		return quoteRepository.getQuoteByActor(actor);
 	}
 
 }

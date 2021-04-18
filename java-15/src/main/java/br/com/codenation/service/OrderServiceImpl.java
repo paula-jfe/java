@@ -1,9 +1,6 @@
 package br.com.codenation.service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import br.com.codenation.model.OrderItem;
@@ -34,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 		return ids.stream().map((id) -> {
 			Optional<Product> product = productRepository.findById(id);
 			return product.orElse(null);
-		}).collect(Collectors.toSet());
+		}).filter(Objects::nonNull).collect(Collectors.toSet());
 	}
 
 	@Override
