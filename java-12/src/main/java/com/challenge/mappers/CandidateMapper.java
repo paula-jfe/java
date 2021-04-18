@@ -22,5 +22,4 @@ public interface CandidateMapper {
 
     List<CandidateDTO> map(List<Candidate> candidates);
 
-
 }
